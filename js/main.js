@@ -57,7 +57,7 @@ function updateText(string){
                 height: .05,
                 curveSegments: 12,
             } );
-            var textMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
             textMesh = new THREE.Mesh( textGeo, textMaterial );
             textMesh.position.set(camera.position.x-5*Math.sin(camera.rotation.y), 3, camera.position.z-5*Math.cos(camera.rotation.y));
             textMesh.rotation.set(0, camera.rotation.y, 0);
@@ -73,16 +73,16 @@ function ranPos(x, y, z){
     var xPos = Math.random() * x;
     var yPos = Math.random() * y;
     var zPos = Math.random() * z;
-    console.log('coordinates: '+xPos+' , '+ yPos+ ' , '+zPos);
+    // console.log('coordinates: '+xPos+' , '+ yPos+ ' , '+zPos);
     coordinates.push(xPos); coordinates.push(yPos); coordinates.push(zPos);
-    console.log('coordinates arr: '+coordinates);
+    // console.log('coordinates arr: '+coordinates);
     return coordinates;
 }
 function randomColor(){
     var r = Math.floor(Math.random()*256);
     var g = Math.floor(Math.random()*256);
     var b = Math.floor(Math.random()*256);
-    console.log('rgb('+r+','+g+','+b+')');
+    // console.log('rgb('+r+','+g+','+b+')');
     return 'rgb('+r+','+g+','+b+')';
 }
 
@@ -93,7 +93,7 @@ function spawnBox() {
     var posArr = ranPos(1, 1, 1);
     spawns.push(cube);
     scene.add( cube );
-    cube.position.set(posArr[0],posArr[1],posArr[2])
+    cube.position.set(posArr[0],posArr[1],posArr[2]);
 }
 function shoot(){
     var geometry = new THREE.SphereGeometry( .5, 8, 8 );
@@ -113,24 +113,24 @@ function shoot(){
     }, 1000);
     bullets.push(bullet);
     scene.add(bullet);
-    console.log(bullets.length);
+    console.log('bullets in play: '+bullets.length);
     
 }
 
-// function detectCollision(object){
-//     for(var i = 0; i < spawns.length; i++){
-//         var distance = ((object.position.x-spawns[i].position.x)^2+(object.position.y-spawns[i].position.y)^2+(object.position.z-spawns[i].position.z)^2)^.5;
-//         console.log('xDistance: '+(object.position.x-spawns[i].position.x)^2);
-//         console.log('yDistance: '+(object.position.y-spawns[i].position.y)^2);
-//         console.log('zDistance: '+(object.position.z-spawns[i].position.z)^2);
-//         console.log('distance: '+ distance);
-//         if(distance < 1){
-//             score++;
-//             updateText(String(score)); 
-//             console.log('score: '+score);
-//         }
-//     }
-// }
+function detectCollision(object){
+    for(var i = 0; i < spawns.length; i++){
+        var distance = object.position.distanceTo(spawns[i].position);
+        console.log('distance: '+distance);
+        if(distance < spawns[i].geometry.boundingSphere.radius){
+            score+=1;
+            updateText(String(score)); 
+            scene.remove(spawns[i]);
+            spawns.splice(i,1);
+            spawnBox();
+            console.log('score: '+score);
+        }
+    }
+}
 
 function onKeyDown(){
     var dampening = .05;
@@ -175,18 +175,19 @@ function onKeyDown(){
 
 spawnBox();
 
+
 camera.position.z = 5;
 
 
 var animate = function () {
     requestAnimationFrame( animate );
     for(var i = 0; i < spawns.length; i++){
-        spawns[i].rotation.x += 0.1;
+        //spawns[i].rotation.x += 0.1;
         spawns[i].rotation.y += 0.1;
     }
     for(var i = 0; i < bullets.length; i++){
         bullets[i].position.add(bullets[i].velocity);
-        // detectCollision(bullets[i]);
+        detectCollision(bullets[i]);
     }
     renderer.render(scene, camera);
 };
