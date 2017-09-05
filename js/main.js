@@ -9,6 +9,17 @@ document.body.addEventListener( 'keydown', onKeyDown, false );
 
 var spawns = [];
 
+//-------------------------------
+var spriteMap = new THREE.TextureLoader().load( 'img/gun_sight.png' );
+var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
+var sprite = new THREE.Sprite( spriteMaterial );
+sprite.scale.set(1, 1, 1);
+sprite.position.set(0,0,-5);
+camera.add(sprite);
+scene.add( camera );
+
+//-------------------------------
+
 function ranPos(x, y, z){
     var coordinates = [];
     var xPos = Math.random() * x;
@@ -54,6 +65,7 @@ function onKeyDown(){
        break;
     }
 }
+
 spawnBox();
 
 camera.position.z = 5;
