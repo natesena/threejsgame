@@ -1,3 +1,4 @@
+
 window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize() {
@@ -23,6 +24,7 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 var clock = new THREE.Clock();
 var renderer = new THREE.WebGLRenderer();
+var loader = new THREE.FontLoader();
 var stats = new Stats();
 
 stats.showPanel(0); //stats panel
@@ -33,8 +35,14 @@ var bullets = [];
 var strings = [];
 
 var score = 0;
-//--------------------
 
+var gameReady = false;
+
+//--------Creating Game Object------------
+// game.scenes.scene1 = scene;
+
+// var currentPlayer = game.players.player1;
+//---
 
 
 function spawnBox() {
@@ -43,8 +51,10 @@ function spawnBox() {
     var cube = new THREE.Mesh( geometry, wireframeMaterial );
     var posArr = ranPos(10, 0, 10);
     cube.position.set(posArr[0],posArr[1],posArr[2]);
-    spawns.push(cube);
     scene.add(cube);
+    // setTimeout(function() {
+        spawns.push(cube);
+    // }, 1000)
 }
 //----
 //from mr.doob
@@ -106,27 +116,8 @@ function init(){
 
 
 
-var loader = new THREE.FontLoader();
 
-function updateText(string){
-    scene.remove(strings[0]);
-    strings.shift();
-    loader.load( 'fonts/font.json', function ( font ) {
-            var textGeo = new THREE.TextGeometry( string, {
-                font: font,
-                size: .25,
-                height: .05,
-                curveSegments: 12,
-            } );
-            var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
-            textMesh = new THREE.Mesh( textGeo, textMaterial );
-            textMesh.position.set(camera.position.x-5*Math.sin(camera.rotation.y), 3, camera.position.z-5*Math.cos(camera.rotation.y));
-            textMesh.rotation.set(0, camera.rotation.y, 0);
-            scene.add(textMesh);
-            strings.push(textMesh);
-        } );
-        
-}
+
 
 //object functions
 function ranPos(x, y, z){
@@ -175,19 +166,49 @@ function detectCollision(object){
     for(var i = 0; i < spawns.length; i++){
         var distance = object.position.distanceTo(spawns[i].position);
         console.log('distance'+distance);
-        if(distance < spawns[i].geometry.boundingSphere.radius){
+        if(spawns[i].geometry.boundingSphere && distance < spawns[i].geometry.boundingSphere.radius){
             score+=1;
             updateScore();
-            //updateText(String(score)); if we want the score above in 3d format
-            spawnBox();
+            //updateText(String(score)); //if we want the score above in 3d format
             scene.remove(spawns[i]);
             spawns.splice(i,1);
+            spawnBox();
             console.log('score: '+score);
         }
     }
 }
 
+//codesauce code
+var loadingScreen = {
+	scene: new THREE.Scene(),
+	camera: new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000),
+	box: new THREE.Mesh(
+		new THREE.BoxGeometry(0.5,0.5,0.5),
+		new THREE.MeshBasicMaterial({ color:0x4444ff }),
+    ),
+    light: new THREE.AmbientLight( 0xffffff),
+    
+};
+//end codesauce code
+
+
 var animate = function () {
+
+    if( gameReady == false ){
+        loadingScreen.scene.add(loadingScreen.box);
+        loadingScreen.box.position.z = -5;
+		requestAnimationFrame(animate);
+		
+		loadingScreen.box.position.x -= 0.05;
+		if( loadingScreen.box.position.x < -10 ) loadingScreen.box.position.x = 10;
+        loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
+        
+        //
+
+		//
+		renderer.render(loadingScreen.scene, loadingScreen.camera);
+		return;
+	}
      //next three variables take from stemkoski
     var delta = clock.getDelta(); // seconds.
 	var moveDelta = 8*delta; // 200 pixels per second
