@@ -58,25 +58,12 @@ function spawnBox() {
 }
 //----
 //from mr.doob
-var path = "img/cubemap/";
-var format = '.png';
-var urls = [
-        path + 'front' + format, path + 'back' + format,
-        path + 'top' + format, path + 'bottom' + format,
-        path + 'left' + format, path + 'right' + format
-    ];
-var reflectionCube = new THREE.CubeTextureLoader().load( urls );
-reflectionCube.format = THREE.RGBFormat;
-scene.background = reflectionCube;
+
 //---
 function init(){
 
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
-    // document.body.addEventListener( 'keydown', onKeyDown, false );
-
-    // var axes = new THREE.AxisHelper(100);
-    // scene.add( axes );
 
     //-----------GUI Elements--------------------
     var loader = new THREE.TextureLoader();
@@ -87,15 +74,22 @@ function init(){
     sprite.position.set(0,0,-1);
     camera.add(sprite);
     scene.add( camera );
-
-    
     //-------------------------------
+    
     // ambient light to see floor
     scene.add( new THREE.AmbientLight( 0xffffff) );
 
     //skybox
-
-   
+    var path = "img/cubemap/";
+    var format = '.png';
+    var urls = [
+            path + 'front' + format, path + 'back' + format,
+            path + 'top' + format, path + 'bottom' + format,
+            path + 'left' + format, path + 'right' + format
+        ];
+    var reflectionCube = new THREE.CubeTextureLoader().load( urls );
+    reflectionCube.format = THREE.RGBFormat;
+    scene.background = reflectionCube;
     
     //floor
     var groundTexture = loader.load( 'img/red_grid.png' );
