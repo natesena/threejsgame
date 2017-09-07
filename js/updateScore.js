@@ -1,5 +1,10 @@
 function updateScore(){
-    var scoreEl = document.getElementById('p1-score');
-    //console.log('update score: '+ score);
-    scoreEl.textContent = String(score);
+	if(!currentPlayer){
+		var scoreEl = document.getElementById('p1-score');
+    	scoreEl.textContent = String(score);
+	}
+	else{
+		var scoreEl = document.getElementById('p2-score');
+		scoreEl.textContent = String(score);
+	}
 }

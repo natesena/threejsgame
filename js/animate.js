@@ -2,6 +2,7 @@
 
 var animate = function () {
         if(gameReady == false){
+            score = 0;
             welcomeAnimate();
             return;
         }

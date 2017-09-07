@@ -8,7 +8,7 @@ function countDown(){
     	console.log('gameReady is '+ gameReady);
     	clearInterval(playing);
     	resetClock();
-    	//switch player
+    	switchActivePlayerScore();
     }
 }
 
