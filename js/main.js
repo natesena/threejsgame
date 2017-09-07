@@ -18,25 +18,11 @@ var bullets = [];
 var strings = [];
 var score = 0;
 var gameReady = false;
-var currentPlayer = 0;
+var currentPlayer = 1;
 
 stats.showPanel(0); //stats panel
 document.body.appendChild( stats.dom );
-
-function spawnBox() {
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var wireframeMaterial = new THREE.MeshBasicMaterial( { color: randomColor(), wireframe: true, transparent: true } ); 
-    var cube = new THREE.Mesh( geometry, wireframeMaterial );
-    var posArr = ranPos(10, 0, 10);
-    cube.position.set(posArr[0],posArr[1],posArr[2]);
-    scene.add(cube);
-    // setTimeout(function() {
-        spawns.push(cube);
-    // }, 1000)
-}
-
-
-init()
+init();
 setInterval(countDown, 1000);
 switchActivePlayerScore();
 animate();
