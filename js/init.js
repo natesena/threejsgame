@@ -49,7 +49,7 @@ function init(){
 // welcomeAnimate initialization
         
         loadingScreen.addText('Welcome');
-        loadingScreen.addText('to SMASHTRON');
+        loadingScreen.addText('to BLASTRON');
         loadingScreen.addText('press delete to play');
         console.log('added text to load screen');
         loadingScreen.scene.add(loadingScreen.box);
