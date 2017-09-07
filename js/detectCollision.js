@@ -9,7 +9,7 @@ function detectCollision(object){
             scene.remove(spawns[i]);
             spawns.splice(i,1);
             spawnBox();
-            console.log('score: '+score);
+            // console.log('score: '+score);
         }
     }
 }

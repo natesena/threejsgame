@@ -4,8 +4,11 @@ function countDown(){
     lastTime--;
     time.innerText = String(lastTime);
     if(lastTime == 0){
-    //switch players with delay
-    //gameOver
+    	gameReady = false;
+    	console.log('gameReady is '+ gameReady);
+    	clearInterval(countDown);
+    	resetClock();
+    	//switch player
     }
 }
 

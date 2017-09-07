@@ -9,9 +9,9 @@ var blasterSound = new Howl({
     src:['sounds/laserBlast.wav'],
     autoplay:false,
     volume: 0.03,
-    onend:function(){
-        console.log('finished sound');
-    },
+    // onend:function(){
+    //     console.log('finished sound');
+    // },
 });
 var spawns = [];
 var bullets = [];
@@ -23,6 +23,8 @@ var currentPlayer = 1;
 stats.showPanel(0); //stats panel
 document.body.appendChild( stats.dom );
 init();
-setInterval(countDown, 1000);
 switchActivePlayerScore();
 animate();
+if(gameReady){
+    setInterval(countDown, 1000);
+}

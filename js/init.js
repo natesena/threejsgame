@@ -2,6 +2,7 @@ function init(){
     
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
+
     
         //-----------GUI Elements--------------------
         var loader = new THREE.TextureLoader();
@@ -42,6 +43,18 @@ function init(){
         
         spawnBox();
         camera.position.z = 5;
+
+
+//from welcomeAnimate
+        
+        loadingScreen.addText('Welcome');
+        loadingScreen.addText('to SMASHTRON');
+        loadingScreen.addText('press delete to play');
+        console.log('added text to load screen');
+        loadingScreen.scene.add(loadingScreen.box);
+        loadingScreen.box.position.z = -5;
+
+//from welcome animate end
         
         document.body.appendChild( stats.domElement );
     }

@@ -1,28 +1,8 @@
-//codesauce code
-var loadingScreen = {
-	scene: new THREE.Scene(),
-	camera: new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000),
-	box: new THREE.Mesh(
-		new THREE.BoxGeometry(0.5,0.5,0.5),
-		new THREE.MeshBasicMaterial({ color:0x4444ff }),
-    ),
-    light: new THREE.AmbientLight( 0xffffff),
-};
-//end codesauce code
+
 
 var animate = function () {
-    
-        if( gameReady == false ){
-            stats.begin();
-            loadingScreen.scene.add(loadingScreen.box);
-            loadingScreen.box.position.z = -5;
-            stats.end();
-            requestAnimationFrame(animate);
-            
-            loadingScreen.box.position.x -= 0.05;
-            if( loadingScreen.box.position.x < -10 ) loadingScreen.box.position.x = 10;
-            loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
-            renderer.render(loadingScreen.scene, loadingScreen.camera);
+        if(gameReady == false){
+            welcomeAnimate();
             return;
         }
          //next three variables take from stemkoski
