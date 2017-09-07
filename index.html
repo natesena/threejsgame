@@ -4,8 +4,10 @@
 		<title>SMASHTRON</title>
 		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="icon" href="img/favicon.gif" type="image/gif" >
 	</head>
 	<body>
+		<script src="js/howler.min.js"></script>
 		<script src="js/stats.min.js"></script>
 		<script src="js/three.min.js"></script>
 		<script src="js/game.js"></script>
@@ -16,6 +18,9 @@
 		<script src="js/keyEvents.js"></script>
 		<script src="js/randomColorPos.js"></script>
 		<script src="js/updateScore.js"></script>
+		<script src="js/shoot.js"></script>
+		<script src="js/countDown.js"></script>
+		<script src="js/switchActivePlayerScore.js"></script>
 		<script src="js/main.js"></script>
 		<div id='container'>
 				<div id="scoreboard">
@@ -24,11 +29,11 @@
 							<p class="inline" id='time'>60</p>
 						</div>
 						<div>
-							<p class="inline">Player1:</p>
+							<p class="inline" id='p1'>Player1:</p>
 							<p class="inline" id='p1-score'>0</p>
 						</div>
 						<div>
-							<p class="inline">Player2:</p>
+							<p class="inline" id='p2'>Player2:</p>
 							<p class="inline" id='p2-score'>0</p>
 						</div>
 				</div>

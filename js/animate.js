@@ -1,8 +1,22 @@
+//codesauce code
+var loadingScreen = {
+	scene: new THREE.Scene(),
+	camera: new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000),
+	box: new THREE.Mesh(
+		new THREE.BoxGeometry(0.5,0.5,0.5),
+		new THREE.MeshBasicMaterial({ color:0x4444ff }),
+    ),
+    light: new THREE.AmbientLight( 0xffffff),
+};
+//end codesauce code
+
 var animate = function () {
     
         if( gameReady == false ){
+            stats.begin();
             loadingScreen.scene.add(loadingScreen.box);
             loadingScreen.box.position.z = -5;
+            stats.end();
             requestAnimationFrame(animate);
             
             loadingScreen.box.position.x -= 0.05;
@@ -12,8 +26,8 @@ var animate = function () {
             return;
         }
          //next three variables take from stemkoski
-        var delta = clock.getDelta(); // seconds.
-        var moveDelta = 8*delta; // 200 pixels per second
+        var delta = clock.getDelta(); // seconds passed since last animate call.
+        var moveDelta = 8*delta; 
         var rotateAngle = Math.PI * delta;   // pi/2 radians (90 degrees) per second
         stats.begin(); 
         for(var i = 0; i < spawns.length; i++){
