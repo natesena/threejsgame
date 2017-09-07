@@ -1,3 +1,5 @@
+//ranPos sets each box object in a random position
+//randomColor makes game objects wacky colors
 function ranPos(x, y, z){
     var coordinates = [];
     var xPos = Math.random() * x;

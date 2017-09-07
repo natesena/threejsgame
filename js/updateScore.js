@@ -1,3 +1,4 @@
+//updateScore adds the score to the current player's score on the scoreboard
 function updateScore(){
 	if(!currentPlayer){
 		var scoreEl = document.getElementById('p1-score');

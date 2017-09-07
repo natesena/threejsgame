@@ -1,3 +1,5 @@
+//if the window is resized, increase the rendered view
+//taken from mrdoobs or stemkoski, who knows!
 window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize() {

@@ -1,3 +1,4 @@
+//welcomeAnimate is the welcome screen's animation function
 //some codesauce code
 var loadingScreen = {
 	scene: new THREE.Scene(),
@@ -13,8 +14,8 @@ var loadingScreen = {
         loader.load( 'fonts/font.json', function ( font ) {
                 var textGeo = new THREE.TextGeometry( string, {
                     font: font,
-                    size: .5,
-                    height: .05,
+                    size: .35,
+                    height: .025,
                     curveSegments: 12,
                 } );
                 var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
@@ -30,12 +31,9 @@ var loadingScreen = {
 };
 //end codesauce code
 var welcomeAnimate = function(){
-    // if(rounds%2 == 0){
-    //     resetScores();
-    // }
     if(gameReady){
         animate();
-        return;
+        return;//make sure to use a return or else animate and welcomeAnimate will run simultaneously, killing your computer
     }
     stats.begin();
     stats.end();
@@ -45,7 +43,7 @@ var welcomeAnimate = function(){
     if( loadingScreen.box.position.x < -13 ){
         loadingScreen.box.position.x = 13;
     } 
-    loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
+    loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);//make the box move around in a funny way
     loadingScreen.box.position.z += .1*Math.sin(loadingScreen.box.position.x);
     loadingScreen.box.rotation.y +=0.1;
     loadingScreen.box.rotation.x +=0.1;

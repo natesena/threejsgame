@@ -1,4 +1,4 @@
-//resetscores.js
+//resetscores converts each score back to 0
 function resetScores(){
 	var score1El = document.getElementById('p1-score');
 	var score2El = document.getElementById('p2-score');

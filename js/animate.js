@@ -1,15 +1,17 @@
-
+//animate gets run as fast as the computer can go (60fps+)
+//each call is a check on the game logic
 
 var animate = function () {
-        if(gameReady == false){
-            score = 0;
-            welcomeAnimate();
-            return;
+        if(gameReady == false){//if the game or rather player has not hit the delete key to start playing
+            score = 0;//current player's score is reset
+            welcomeAnimate();//render welcome screen
+            return;//return to make sure only one scene is animated at once -- COMPUTER WILL BLOW UP!
         }
-         //next three variables take from stemkoski
+        //next three variables take from stemkoski
         var delta = clock.getDelta(); // seconds passed since last animate call.
         var moveDelta = 8*delta; 
-        var rotateAngle = Math.PI * delta;   // pi/2 radians (90 degrees) per second
+        var rotateAngle = Math.PI * delta;   // pi radians (180 degrees) per second
+        //end code referenced by stemkoski
         stats.begin(); 
         for(var i = 0; i < spawns.length; i++){
             //spawns[i].rotation.x += 0.1;

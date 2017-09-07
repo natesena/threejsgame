@@ -1,10 +1,11 @@
+//init is run first within main.js to initialize both the welcome and playing scenes
 function init(){
     
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
     
-        //-----------GUI Elements--------------------
+        //-----------Game Play GUI Elements--------------------
         var loader = new THREE.TextureLoader();
         var spriteMap = loader.load( 'img/gun_sight.png' );
         var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
@@ -18,7 +19,7 @@ function init(){
         // ambient light to see floor
         scene.add( new THREE.AmbientLight( 0xffffff) );
     
-        //skybox
+        //skybox taken from mrdoobs
         var path = "img/cubemap/";
         var format = '.png';
         var urls = [
@@ -45,7 +46,7 @@ function init(){
         camera.position.z = 5;
 
 
-//from welcomeAnimate
+// welcomeAnimate initialization
         
         loadingScreen.addText('Welcome');
         loadingScreen.addText('to SMASHTRON');
@@ -56,8 +57,8 @@ function init(){
         loadingScreen.plane.position.z = -10;
         loadingScreen.box.position.z = -5;
 
-//from welcome animate end
+//welcome animate end
         
-        document.body.appendChild( stats.domElement );
+        document.body.appendChild( stats.domElement );//lets see those FPS!
     }
     

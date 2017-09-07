@@ -1,4 +1,8 @@
-console.log('game.js loaded');
+//this was an attempt at creating a giant game object
+//the difficulty in this is that each scene needs its own method to animate, which calls itself explicitly
+//i plan on updating this game object to working condition
+
+//console.log('game.js loaded');
 
 var game = {
     camera: new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 ),

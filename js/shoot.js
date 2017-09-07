@@ -1,3 +1,5 @@
+//shoot adds a bullet into the game with a velocity that is forward of the camera's rotation
+
 function shoot(){
     blasterSound.play();
     var geometry = new THREE.SphereGeometry( .5, 8, 8 );
@@ -10,7 +12,7 @@ function shoot(){
         -Math.cos(camera.rotation.y)
     );
     bullet.alive = true;
-    setTimeout(function(){
+    setTimeout(function(){//each bullet only lasts a second before disappearing
         bullet.alive = false;
         scene.remove(bullet);
         bullets.shift();
