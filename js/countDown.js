@@ -6,7 +6,7 @@ function countDown(){
     if(lastTime == 0){
     	gameReady = false;
     	console.log('gameReady is '+ gameReady);
-    	clearInterval(countDown);
+    	clearInterval(playing);
     	resetClock();
     	//switch player
     }

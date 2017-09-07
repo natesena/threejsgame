@@ -13,12 +13,12 @@ var loadingScreen = {
                 var textGeo = new THREE.TextGeometry( string, {
                     font: font,
                     size: .5,
-                    height: .1,
+                    height: .05,
                     curveSegments: 12,
                 } );
                 var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
                 textMesh = new THREE.Mesh( textGeo, textMaterial );
-                textMesh.position.set(-4,-loadingScreen.loadStrings.length, -5);  
+                textMesh.position.set(-6,-loadingScreen.loadStrings.length, -5);  
                 console.log('text position:'+ textMesh.position.y)
                 textMesh.rotation.set(0, camera.rotation.y, 0);
                 loadingScreen.loadStrings.push(textMesh);
@@ -33,10 +33,6 @@ var welcomeAnimate = function(){
         animate();
         return;
     }
-    if(keyboard[8]){
-        gameReady = true;
-        setInterval(countDown, 1000);
-    }
         stats.begin();
         stats.end();
         requestAnimationFrame(welcomeAnimate);
@@ -44,6 +40,10 @@ var welcomeAnimate = function(){
         if( loadingScreen.box.position.x < -10 ) loadingScreen.box.position.x = 10;
         loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
         renderer.render(loadingScreen.scene, loadingScreen.camera);
+    if(keyboard[8]){
+        gameReady = true;
+        var playing = setInterval(countDown, 1000);
+    }
         return;
 }
     
