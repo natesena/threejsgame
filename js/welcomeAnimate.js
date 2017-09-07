@@ -30,6 +30,9 @@ var loadingScreen = {
 };
 //end codesauce code
 var welcomeAnimate = function(){
+    // if(rounds%2 == 0){
+    //     resetScores();
+    // }
     if(gameReady){
         animate();
         return;

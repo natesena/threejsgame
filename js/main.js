@@ -20,6 +20,7 @@ var score = 0;
 var gameReady = false;
 var currentPlayer = 1;
 var playing;
+var rounds = 0;
 
 stats.showPanel(0); //stats panel
 document.body.appendChild( stats.dom );
