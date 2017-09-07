@@ -8,6 +8,7 @@ var loadingScreen = {
     ),
     light: new THREE.AmbientLight( 0xffffff),
     loadStrings: [],
+    plane: new THREE.Mesh( new THREE.PlaneGeometry( 34, 20, 32 ), new THREE.MeshBasicMaterial({color: randomColor(), side: THREE.DoubleSide})),
     addText: function (string){
         loader.load( 'fonts/font.json', function ( font ) {
                 var textGeo = new THREE.TextGeometry( string, {
@@ -33,16 +34,22 @@ var welcomeAnimate = function(){
         animate();
         return;
     }
-        stats.begin();
-        stats.end();
-        requestAnimationFrame(welcomeAnimate);
-        loadingScreen.box.position.x -= 0.05;
-        if( loadingScreen.box.position.x < -10 ) loadingScreen.box.position.x = 10;
-        loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
-        renderer.render(loadingScreen.scene, loadingScreen.camera);
+    stats.begin();
+    stats.end();
+    requestAnimationFrame(welcomeAnimate);
+    loadingScreen.box.position.x -= 0.05;
+
+    if( loadingScreen.box.position.x < -13 ){
+        loadingScreen.box.position.x = 13;
+    } 
+    loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);
+    loadingScreen.box.position.z += .1*Math.sin(loadingScreen.box.position.x);
+    loadingScreen.box.rotation.y +=0.1;
+    loadingScreen.box.rotation.x +=0.1;
+    renderer.render(loadingScreen.scene, loadingScreen.camera);
     if(keyboard[8]){
+        playing = setInterval(countDown, 1000);
         gameReady = true;
-        var playing = setInterval(countDown, 1000);
     }
         return;
 }

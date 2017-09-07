@@ -52,6 +52,8 @@ function init(){
         loadingScreen.addText('press delete to play');
         console.log('added text to load screen');
         loadingScreen.scene.add(loadingScreen.box);
+        loadingScreen.scene.add(loadingScreen.plane);
+        loadingScreen.plane.position.z = -10;
         loadingScreen.box.position.z = -5;
 
 //from welcome animate end

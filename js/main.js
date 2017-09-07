@@ -19,12 +19,11 @@ var strings = [];
 var score = 0;
 var gameReady = false;
 var currentPlayer = 1;
+var playing;
 
 stats.showPanel(0); //stats panel
 document.body.appendChild( stats.dom );
 init();
 switchActivePlayerScore();
 animate();
-if(gameReady){
-    setInterval(countDown, 1000);
-}
+
