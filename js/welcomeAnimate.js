@@ -44,11 +44,11 @@ var welcomeAnimate = function(){
         loadingScreen.box.position.x = 13;
     } 
     loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);//make the box move around in a funny way
-    loadingScreen.loadStrings[0].position.z += .05*Math.sin(loadingScreen.box.position.x);
+    loadingScreen.loadStrings[0].position.z = .05*Math.sin(loadingScreen.box.position.x);
     loadingScreen.loadStrings[0].rotation.x += .01*Math.sin(loadingScreen.box.position.x);
-    loadingScreen.loadStrings[1].position.z += .05*Math.sin(loadingScreen.box.position.x + 1);
+    loadingScreen.loadStrings[1].position.z = .05*Math.sin(loadingScreen.box.position.x + 1);
     loadingScreen.loadStrings[1].rotation.x += .01*Math.sin(loadingScreen.box.position.x + 1);
-    loadingScreen.loadStrings[2].position.z += .05*Math.sin(loadingScreen.box.position.x + 2);
+    loadingScreen.loadStrings[2].position.z = .05*Math.sin(loadingScreen.box.position.x + 2);
     loadingScreen.loadStrings[2].rotation.x += .01*Math.sin(loadingScreen.box.position.x + 2);
     loadingScreen.box.position.z += .1*Math.sin(loadingScreen.box.position.x);
     loadingScreen.box.rotation.y +=0.1;
