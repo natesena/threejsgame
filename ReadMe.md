@@ -1,10 +1,15 @@
-##Welcome to the BLASTRON Readme!
+#Welcome to the BLASTRON Readme!
+##play me [here](https://natesena.github.io/threejsgame/) 
+
 ###Technologies used
-This game runs using Three.js.
+HTML, CSS, Javascript, Three.js, Howler.js
+
+Howler.js is an audio library that gives users greater functionality over audio. in my case, I wanted to make my blaster volume less loud, so I incorporated this library.
+
 Three.js is a cross-browser JavaScript library/API used to create and display animated 3D computer graphics in a web browser. Three.js allows the creation of GPU-accelerated 3D animations using the JavaScript language as part of a website without relying on proprietary browser plugins. This is possible thanks to the advent of WebGL. Three.JS was created by Ricardo Cabello (Mr.Doob).
 ###Installation Instructions
-Clone it! Run it in your browser by running a local webserver.
-This can be done by installing python and running
+Clone it! Run BLASTRON in your browser by running a local webserver.
+This can be done by installing python, navigating to the project directory, and typing in
 `python -m SimpleHTTPServer` in the console.
 Then, navigate to the localhost:'port number' that is written in the console.
 URL Example: localhost:8000
