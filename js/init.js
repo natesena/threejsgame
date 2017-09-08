@@ -48,14 +48,16 @@ function init(){
 
 // welcomeAnimate initialization
         
-        loadingScreen.addText('Welcome');
-        loadingScreen.addText('to BLASTRON');
-        loadingScreen.addText('press delete to play');
-        console.log('added text to load screen');
+        loadingScreen.addText('Welcome', 0.35, -2);
+        loadingScreen.addText('to BLASTRON', 0.35, -3);
+        loadingScreen.addText('press delete to play', 0.35, -5);
+        loadingScreen.addText('AWSD to Move, <> to turn, Enter to Shoot', 0.15, -4.5);
         loadingScreen.scene.add(loadingScreen.box);
         loadingScreen.scene.add(loadingScreen.plane);
+        loadingScreen.scene.add(loadingScreen.plane2);
         loadingScreen.plane.position.z = -10;
-        loadingScreen.box.position.z = -5;
+        loadingScreen.plane2.position.z = -11;
+        loadingScreen.box.position.z = 4 * Math.PI;
 
 //welcome animate end
         
