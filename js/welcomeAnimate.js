@@ -20,7 +20,7 @@ var loadingScreen = {
                 } );
                 var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
                 textMesh = new THREE.Mesh( textGeo, textMaterial );
-                textMesh.position.set(-6,-loadingScreen.loadStrings.length, -5);  
+                textMesh.position.set(-6,-loadingScreen.loadStrings.length, -6);  
                 console.log('text position:'+ textMesh.position.y)
                 textMesh.rotation.set(0, camera.rotation.y, 0);
                 loadingScreen.loadStrings.push(textMesh);
