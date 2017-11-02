@@ -32,7 +32,7 @@ function init(){
         scene.background = reflectionCube;
         
         //floor
-        var groundTexture = loader.load( 'img/red_grid.png' );
+        var groundTexture = loader.load( 'img/Custom_Grid_threejs.png' );
         groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
         groundTexture.repeat.set( 200, 200 );
         groundTexture.anisotropy = 16;
