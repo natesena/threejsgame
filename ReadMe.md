@@ -1,47 +1,59 @@
-#Welcome to the BLASTRON Readme!
-##play me [here](https://natesena.github.io/threejsgame/) 
+##Welcome to the BLASTRON Readme!
 
-###Technologies used
-HTML, CSS, Javascript, Three.js, Howler.js
+![Blastron Welcome](./img/ReadMeIMG/Blastron_Welcome.jpg)
 
-Howler.js is an audio library that gives users greater functionality over audio. in my case, I wanted to make my blaster volume less loud, so I incorporated this library.
+### Getting Started
 
-Read more on Howler.js [here](https://github.com/goldfire/howler.js#documentation)
+Clone it! Run it in your browser by running a local webserver.
 
-Three.js is a cross-browser JavaScript library/API used to create and display animated 3D computer graphics in a web browser. Three.js allows the creation of GPU-accelerated 3D animations using the JavaScript language as part of a website without relying on proprietary browser plugins. This is possible thanks to the advent of WebGL. Three.JS was created by Ricardo Cabello (Mr.Doob).
+This can be done by installing python and running
 
-Read more on Three.js [here](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene)
-###Installation Instructions
-Clone it! Clone blastron to a local directory and then run BLASTRON in your browser by running a local webserver.
-This can be done by installing [python](https://www.python.org/downloads/), navigating to the project directory, and typing in
-`python -m SimpleHTTPServer` in the console.
-Then, navigate to the localhost:'port number' that is written in the console.
-URL Example: localhost:8000
+`python -m SimpleHTTPServer` (python 2.0+) or `python -m http.server [port]` (python 3.0+) in the console.
+
+Then, navigate to your localhost and play!
+
+![Blastron Gameplay](./img/ReadMeIMG/Blastron_Gameplay.jpg)
+
+###How to Play
+
+The goal of the game is to shoot as many cube targets as you can within one minute.
+
+Using the "Enter" key, users shoot a sphere  towards spinning cubes, incrementing their score by one in a time trial against player two.
+
+Any lateral movement  is done with AWSD controls, with rotation done by right and left arrows.
+
+###Technologies Used
+
+This game runs using vanilla javascript and Three.js
+
+Three.js is a cross-browser JavaScript library/API used to create and display animated 3D computer graphics in a web browser. Three.js allows for the creation of GPU-accelerated 3D animations using the JavaScript language as part of a website without relying on proprietary browser plugins. This is possible thanks to the advent of WebGL and Three.js' creator, Ricardo Cabello (Mr.Doob).
+
 
 ###Unsolved Problems/Areas of Future Improvement
 
 1. Adding functionality to shoot upwards(will require mastery of moving game object on global axes)
-2. More sounds throughout the game
-3. more different types of shots
 2. Along the same token, making box objects appear in the air
 3. Adding gravity to bullets
-4. Terrains with a height map
-3. Varying types of game objects
-4. A model to represent the player
-5. Making the reticule a different color
-6. Animating the reticule during each shot
-7. "Power Ups"
-8. Ability to easily turn sound effects on and off
-9. Moving game objects around randomly
-10. Online multiplayer
+4. Terrain with a height map
+5. Varying types of game objects
+6. A model to represent the player
+7. Making the reticule a different color
+8. Animating the reticule upon shot
+9. "Power Ups"
+10. Ability to easily turn sound effects on and off
+11. Limiting randomColors to only bright colors
+12. Online multiplayer
 
-###Approach taken
-I originally wanted to create a WebVR game with Aframe.IO. I found difficulty accesing game object properties, which made me switch to three.js, where these properties are easily accessed and animated with simple math.
+### Acknowledgments
+With this library having so many constant changes, resources from the online community were invaluable to test which syntaxes worked for various functionalities.
 
-I began with getting the general movement down. One interesting aspect here is that as you move your player(camera), you can quickly lose track of global axes to get the desired behavior. This required some trigonometric math which Saucecode's tutorials lent much help.
+I especially want to thank saucecode and stemkoski for their work showing what is possible with Three.js, and having the most up to date examples.
 
-From there, bullets were added into the mix. Collision detection was difficult to get right, as it seems timing issues make newly appended box game objects not fully fleshed out before the next animation frame is called, making my desired property to access null. Modifying the function to avoid this error fixed it. To calculate whether the boxes were hit, I checked whether the distance between the each bullet and game object box was less than the bounding sphere's radius for each box game object.
+-saucecode: https://github.com/saucecode
 
-Modularization of code and simpler functions with the right timing to run made the rest relatively easy to work with.
+-stemkoski: https://stemkoski.github.io
+
+
+
 
 
