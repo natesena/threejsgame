@@ -9,8 +9,8 @@ function ranPos(x, y, z){
     return coordinates;
 }
 function randomColor(){
-    var r = Math.floor(Math.random()*256);
-    var g = Math.floor(Math.random()*256);
-    var b = Math.floor(Math.random()*256);
+    var r = 50 + Math.floor(Math.random()*206);
+    var g = 50 + Math.floor(Math.random()*206);
+    var b = 50 + Math.floor(Math.random()*206);
     return 'rgb('+r+','+g+','+b+')';
 }
