@@ -9,8 +9,8 @@ var loadingScreen = {
     ),
     light: new THREE.AmbientLight( 0xffffff),
     loadStrings: [],
-    plane: new THREE.Mesh( new THREE.PlaneGeometry( 34, 20, 32, 20 ), new THREE.MeshBasicMaterial({color: randomColor(), side: THREE.DoubleSide, wireframe: true, transparent: true})),
-    plane2: new THREE.Mesh( new THREE.PlaneGeometry( 34, 20, 32, 20 ), new THREE.MeshBasicMaterial({color: randomColor(), side: THREE.DoubleSide, wireframe: true, transparent: true})),
+    plane: new THREE.Mesh( new THREE.PlaneGeometry( 38, 20, 32, 20 ), new THREE.MeshBasicMaterial({color: randomColor(), side: THREE.DoubleSide, wireframe: true, transparent: true})),
+    plane2: new THREE.Mesh( new THREE.PlaneGeometry( 40, 20, 32, 20 ), new THREE.MeshBasicMaterial({color: randomColor(), side: THREE.DoubleSide, wireframe: true, transparent: true})),
     addText: function (string, fontsize, xpos){
         loader.load( 'fonts/font.json', function ( font ) {
                 var textGeo = new THREE.TextGeometry( string, {
@@ -22,7 +22,6 @@ var loadingScreen = {
                 var textMaterial = new THREE.MeshBasicMaterial({color: randomColor()});
                 textMesh = new THREE.Mesh( textGeo, textMaterial );
                 textMesh.position.set(xpos,-loadingScreen.loadStrings.length + 1.5, -5);  
-                console.log('text position:'+ textMesh.position.y)
                 textMesh.rotation.set(0, camera.rotation.y, 0);
                 loadingScreen.loadStrings.push(textMesh);
                 loadingScreen.scene.add(textMesh);
@@ -46,16 +45,14 @@ var welcomeAnimate = function(){
     } 
     loadingScreen.box.position.y = Math.sin(loadingScreen.box.position.x);//make the box move around in a funny way
     loadingScreen.plane.position.z = .2*Math.sin(loadingScreen.box.position.x) - 10;
-    loadingScreen.plane.position.z = .2*Math.sin(loadingScreen.box.position.x) - 11;
-    loadingScreen.loadStrings[0].position.z = .2*Math.sin(loadingScreen.box.position.x) - 5;
-    loadingScreen.loadStrings[0].rotation.x = .15*Math.sin(loadingScreen.box.position.x);
-    loadingScreen.loadStrings[1].position.z = .2*Math.sin(loadingScreen.box.position.x + 1) - 5;
-    loadingScreen.loadStrings[1].rotation.x = .15*Math.sin(loadingScreen.box.position.x + 1);
-    loadingScreen.loadStrings[2].position.z = .2*Math.sin(loadingScreen.box.position.x + 2) - 5;
-    loadingScreen.loadStrings[2].rotation.x = .15*Math.sin(loadingScreen.box.position.x + 2);
-    loadingScreen.loadStrings[3].position.z = .2*Math.sin(loadingScreen.box.position.x + 3) - 5;
-    loadingScreen.loadStrings[3].rotation.x = .15*Math.sin(loadingScreen.box.position.x + 3);
-    loadingScreen.box.position.z += .1*Math.sin(loadingScreen.box.position.x);
+    loadingScreen.plane2.position.z = .2*Math.sin(loadingScreen.box.position.x + 1) - 11;
+    for(var k = 0; k < 4; k++){
+        if(loadingScreen.loadStrings[k]){
+            loadingScreen.loadStrings[k].position.z = .2*Math.sin(loadingScreen.box.position.x + k) - 5;
+            loadingScreen.loadStrings[k].rotation.x = .15*Math.sin(loadingScreen.box.position.x + k);
+        }
+    }
+    loadingScreen.box.position.z += .05*Math.sin(loadingScreen.box.position.x);
     loadingScreen.box.rotation.y +=0.1;
     loadingScreen.box.rotation.x +=0.1;
     renderer.render(loadingScreen.scene, loadingScreen.camera);
