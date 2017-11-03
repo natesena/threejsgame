@@ -48,7 +48,6 @@ var animate = function () {
             camera.rotation.y -= rotateAngle;
         }
         if(keyboard[13]){
-            // console.log(spawns[0].geometry.boundingSphere.radius);
             shoot();
         }
     
