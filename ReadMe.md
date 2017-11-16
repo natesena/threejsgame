@@ -1,4 +1,5 @@
-## Welcome to the BLASTRON Readme!
+# Welcome to the BLASTRON Readme!
+## [Play Blastron Here](https://natesena.github.io/threejsgame/)	
 
 ![Blastron Welcome](./img/ReadMeIMG/Blastron_Welcome.jpg)
 

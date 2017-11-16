@@ -1,5 +1,5 @@
 //welcomeAnimate is the welcome screen's animation function
-//some codesauce code
+
 var loadingScreen = {
 	scene: new THREE.Scene(),
 	camera: new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000),
@@ -29,7 +29,7 @@ var loadingScreen = {
         })
     }
 };
-//end codesauce code
+
 var welcomeAnimate = function(){
     if(gameReady){
         animate();
